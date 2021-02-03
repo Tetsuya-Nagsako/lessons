@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title SampleApp2
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    header
+      nav
+        - if user_signed_in?
+      strong
+        = link_to current_user.username, pages_show_path
+        =link_to 'プロフィール変更', edit_user_registration_path
+
+
+    p.notice
+      = notice
+    p.alert
+      = alert
+
+      = yield
