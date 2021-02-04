@@ -35,6 +35,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-stack_explorer"
   gem "rspec-rails"
+  gem 'dotenv-rails'
 end
 
 group :development do
