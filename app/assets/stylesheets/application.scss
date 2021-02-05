@@ -1,7 +1,9 @@
 @import "bootstrap";
 
-.mw-md {
+.container-login {
+  @extend .container-fluid;
   max-width: 576px;
+  padding: 2rem;
 }
 
 .alert-notice {
