@@ -1,2 +1,13 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
+
+.mw-md {
+  max-width: 576px;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
