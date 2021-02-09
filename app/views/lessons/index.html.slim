@@ -1,0 +1,28 @@
+h1 Listing lessons
+= link_to 'HOME', pages_index_path
+
+table
+  thead
+    tr
+      th User
+      th Description
+      th Image
+      th Time information
+      th
+      th
+      th
+
+  tbody
+    - @lessons.each do |lesson|
+      tr
+        td = lesson.user_id
+        td = lesson.description
+        td = image_tag lesson.image.url
+        td = lesson.time_information
+        td = link_to 'Show', lesson
+        td = link_to 'Edit', edit_lesson_path(lesson)
+        td = link_to 'Destroy', lesson, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Lesson', new_lesson_path

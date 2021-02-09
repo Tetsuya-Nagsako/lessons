@@ -31,7 +31,6 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   if Rails.application.credentials.gmail.present?
     mail_address = Rails.application.credentials.gmail[:address]
@@ -79,5 +78,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # mailer setting
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'https://b6528732a1ad4ec79c44738b0bc5319c.vfs.cloud9.us-east-2.amazonaws.com', port: 8080 }
 end

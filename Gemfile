@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'bootstrap', '~> 4.5'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views', '~> 1.0'
 
@@ -26,6 +26,9 @@ gem 'rails-i18n', '~> 5.1'
 
 gem "slim-rails"
 gem 'html2slim'
+
+gem 'carrierwave'
+gem 'fog-aws'
 
 
 group :development, :test do

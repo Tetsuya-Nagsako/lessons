@@ -1,0 +1,23 @@
+.topic-new-wrapper
+  .container
+    .row
+      .col-md-6 col-md-offset-3
+        h1.text-center レッスンを投稿する
+      = form_for @lesson do |f|
+        - if @lesson.errors.any?
+          #error_explanation
+            h2 = "#{pluralize(@lesson.errors.count, "error")} prohibited this lesson from being saved:"
+            ul
+              - @lesson.errors.full_messages.each do |message|
+                li = message
+      
+        .field
+          = f.label :description
+          = f.text_area :description
+        .field
+          = f.label :image
+          = f.file_field :image
+        .field
+          = f.label :time_information
+          = f.datetime_select :time_information
+        .actions = f.submit
