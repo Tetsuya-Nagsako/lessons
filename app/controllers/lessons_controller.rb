@@ -8,7 +8,6 @@ class LessonsController < ApplicationController
 
   def user_index
     @lessons = current_user.lessons
-    render :index
   end
 
 

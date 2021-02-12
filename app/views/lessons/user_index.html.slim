@@ -1,5 +1,5 @@
 .container
-  h1 Lessons list
+  h1 My Lessons list
   = link_to 'HOME', pages_index_path
   
   table class="table"
@@ -21,3 +21,7 @@
           td = link_to 'Show', lesson
           td = link_to 'Edit', edit_lesson_path(lesson)
           td = link_to 'Destroy', lesson, data: { confirm: 'Are you sure?' }, method: :delete
+  
+  br
+  
+  = link_to 'Lessonを投稿する', new_lesson_path

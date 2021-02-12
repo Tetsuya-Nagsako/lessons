@@ -23,3 +23,23 @@
 .nav-item {
   padding-right: 40px;
 }
+
+.container {
+  padding-top: 70px;
+}
+
+.table-img {
+  height: 300px;
+  width: 300px;
+  position: relative;
+}
+
+.table-img > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  width: 80%;
+  text-align: center;
+}
