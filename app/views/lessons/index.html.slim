@@ -1,23 +1,25 @@
-.container
-  h1 Lessons list
-  = link_to 'HOME', pages_index_path
-  
-  table class="table"
-    thead class="thead-light"
-      tr
-        th Image
-        th Description
-        th Time information
-        th
-        th
-        th
-  
-    tbody
-      - @lessons.each do |lesson|
+.main
+  .container
+    h1 Lessons list
+    = link_to 'HOME', pages_index_path
+    
+    table class="table"
+      thead class="thead-light"
         tr
-          td class="table-img" = image_tag lesson.image.url
-          td class="table-description" = lesson.description
-          td = lesson.time_information
-          td = link_to 'Show', lesson
-          td = link_to 'Edit', edit_lesson_path(lesson)
-          td = link_to 'Destroy', lesson, data: { confirm: 'Are you sure?' }, method: :delete
+          th Image
+          th Description
+          th Time information
+          th
+          th
+          th
+    
+      tbody
+        - @lessons.each do |lesson|
+          tr
+            td class="table-img" = image_tag lesson.image.url
+            td class="table-description" = lesson.description
+            td = lesson.time_information
+            td = link_to 'Show', lesson
+            - if current_user.id == lesson.user.id
+              td = link_to 'Edit', edit_lesson_path(lesson)
+              td = link_to 'Destroy', lesson, data: { confirm: 'Are you sure?' }, method: :delete

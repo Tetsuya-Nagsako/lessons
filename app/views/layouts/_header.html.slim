@@ -1,8 +1,8 @@
 header
-  nav class="navbar-fixed-top" style="background-color: #e3f2fd;"
+  nav class="navbar-fixed-top navbar-expand-lg navbar-light bg-light container" style="background-color: #e3f2fd;"
     = link_to "Lessons", root_path, class: 'navbar-brand'
-    div id="Navber"
-      ul class="navbar-nav"
+    div class="collapse navbar-collapse" id="navbarSupportedContent"
+      ul class="navbar-nav  mr-auto"
         - if user_signed_in?
           li class="nav-item active"
             = link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link'

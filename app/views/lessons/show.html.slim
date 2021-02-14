@@ -1,18 +1,20 @@
-p#notice = notice
-
-p
-  strong User:
-  = @lesson.user_id
-p
-  strong Description:
-  = @lesson.description
-p
-  strong Image:
-  = image_tag @lesson.image.url
-p
-  strong Time information:
-  = @lesson.time_information
-
-=> link_to 'Edit', edit_lesson_path(@lesson)
-'|
-=< link_to 'レッスン一覧へ', lessons_path
+.main
+  .container
+    = render 'layouts/flash_messages'
+    
+    p
+      strong Description:
+      = @lesson.description
+    p.show-img
+      strong Image:
+      = image_tag @lesson.image.url
+    p
+      strong Time information:
+      = @lesson.time_information
+    
+    - if current_user.id == @lesson.user.id
+      => link_to 'Edit', edit_lesson_path(@lesson)
+      '|
+      =< link_to 'Destroy', @lesson, data: { confirm: '本当によろしいですか' }, method: :delete
+      br
+    = link_to 'レッスン一覧へ', lessons_path

@@ -13,6 +13,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1 or /lessons/1.json
   def show
+    @lesson = Lesson.find(params[:id])
   end
 
   # GET /lessons/new
@@ -22,6 +23,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
+    @lesson = Lesson.find(params[:id])
   end
 
   # POST /lessons or /lessons.json
@@ -30,7 +32,8 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to @lesson, notice: "Lesson was successfully created." }
+        flash[:notice] = "Lesson投稿が完了しました"
+        format.html { redirect_to @lesson }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new, status: :unprocessable_entity }

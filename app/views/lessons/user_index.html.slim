@@ -1,27 +1,28 @@
-.container
-  h1 My Lessons list
-  = link_to 'HOME', pages_index_path
-  
-  table class="table"
-    thead class="thead-light"
-      tr
-        th Image
-        th Description
-        th Time information
-        th
-        th
-        th
-  
-    tbody
-      - @lessons.each do |lesson|
+.main
+  .container
+    h1 My Lessons list
+    = link_to 'HOME', pages_index_path
+    
+    table class="table"
+      thead class="thead-light"
         tr
-          td class="table-img" = image_tag lesson.image.url
-          td class="table-description" = lesson.description
-          td = lesson.time_information
-          td = link_to 'Show', lesson
-          td = link_to 'Edit', edit_lesson_path(lesson)
-          td = link_to 'Destroy', lesson, data: { confirm: 'Are you sure?' }, method: :delete
-  
-  br
-  
-  = link_to 'Lessonを投稿する', new_lesson_path
+          th Image
+          th Description
+          th Time information
+          th
+          th
+          th
+    
+      tbody
+        - @lessons.each do |lesson|
+          tr
+            td class="table-img" = image_tag lesson.image.url
+            td class="table-description" = lesson.description
+            td = lesson.time_information
+            td = link_to 'Show', lesson
+            td = link_to 'Edit', edit_lesson_path(lesson)
+            td = link_to 'Destroy', lesson, data: { confirm: 'Are you sure?' }, method: :delete
+    
+    br
+    
+    = link_to 'Lessonを投稿する', new_lesson_path
