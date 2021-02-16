@@ -32,8 +32,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        flash[:notice] = "Lesson投稿が完了しました"
-        format.html { redirect_to @lesson }
+        format.html { redirect_to @lesson, flash: {success: "Lesson投稿が完了しました" }}
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new, status: :unprocessable_entity }

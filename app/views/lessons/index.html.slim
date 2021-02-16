@@ -20,6 +20,6 @@
             td class="table-description" = lesson.description
             td = lesson.time_information
             td = link_to 'Show', lesson
-            - if current_user.id == lesson.user.id
+            - if current_user && current_user.id == lesson.user.id
               td = link_to 'Edit', edit_lesson_path(lesson)
-              td = link_to 'Destroy', lesson, data: { confirm: 'Are you sure?' }, method: :delete
+              td = link_to 'Destroy', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete
