@@ -5,4 +5,9 @@ class Lesson < ApplicationRecord
   belongs_to :user
 
   mount_uploader :image, ImagesUploader
+  
+  def lesson_time
+    self.time_information.strftime("%Y/%m/%d %H:%M")
+  end
+  
 end

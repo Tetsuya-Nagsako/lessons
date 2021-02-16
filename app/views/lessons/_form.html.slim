@@ -3,7 +3,7 @@
     .container
       .row
         div class="col-md-6 col-md-offset-3"
-          h2.text-center レッスンを投稿する
+          h2.text-center 『レッスンを投稿する』
           = form_for @lesson do |f|
               - if @lesson.errors.any?
                 #error_explanation
@@ -13,15 +13,15 @@
                       li = message
             
               .form-group
-                = f.label :description
+                = f.label :レッスン内容・受講方法について（なるべく詳細に）
                 = f.text_area :description, class: "form-control"
               .form-group
-                = f.label :image
+                = f.label :イメージ画像
                 = f.file_field :image
               .form-group
-                = f.label :time_information
+                = f.label :レッスン開始時間
                 br
                 = f.datetime_select :time_information, class: "form-control"
-              .actions = f.submit '投稿', class: 'btn btn-black btn-block'
+              .actions = f.submit '投 稿', class: 'btn btn-info btn-lg btn-block'
               br
               = link_to 'Back', :back

@@ -6,9 +6,9 @@
     table class="table"
       thead class="thead-light"
         tr
-          th Image
-          th Description
-          th Time information
+          th イメージ画像
+          th 内容・詳細事項
+          th 開始時間
           th
           th
           th
@@ -18,8 +18,9 @@
           tr
             td class="table-img" = image_tag lesson.image.url
             td class="table-description" = lesson.description
-            td = lesson.time_information
-            td = link_to 'Show', lesson
+            td = lesson.lesson_time
+            - if current_user
+              td = link_to 'Show', lesson
             - if current_user && current_user.id == lesson.user.id
               td = link_to 'Edit', edit_lesson_path(lesson)
               td = link_to 'Destroy', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete

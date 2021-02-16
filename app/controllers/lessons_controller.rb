@@ -4,6 +4,7 @@ class LessonsController < ApplicationController
   # GET /lessons or /lessons.json
   def index
     @lessons = Lesson.all
+    @lessons = @lessons.order("time_information DESC")
   end
 
   def user_index

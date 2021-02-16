@@ -10,10 +10,10 @@
       = image_tag @lesson.image.url
     p
       strong Time information:
-      = @lesson.time_information
+      = @lesson.lesson_time
       
     = form_tag charge_path(@lesson) do
-      script.stripe-button data-amount="#{@lesson.id}\
+      script.stripe-button data-amount="100\
       " data-currency="jpy" data-description="クレジット決済\
       " data-key="#{Rails.application.credentials.stripe[:public_key]}" data-locale="auto" data-name="#{@lesson.description}を購入\
       " data-email="#{current_user.email}" data-label="購入する\
