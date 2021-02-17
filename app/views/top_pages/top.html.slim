@@ -2,4 +2,8 @@
   .container
     = render 'layouts/flash_messages'
     h1 Landing page
-    = link_to 'レッスンを見てみる', pages_index_path
+    .top_links_lessonlink
+      = link_to 'レッスンを見てみる', pages_path
+    - if current_user
+      .top_links_mypagelink
+        = link_to 'マイページへ', page_path(current_user.id)

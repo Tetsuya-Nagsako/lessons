@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
     @lesson = Lesson.find(params[:id])
     
     customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
+      email: current_user.email,
       source: params[:stripeToken],
     })
 

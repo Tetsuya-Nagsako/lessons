@@ -8,6 +8,8 @@ header
             = link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link'
           li class="nav-item active"
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
+          li class="nav-item active"
+            = link_to 'マイページ', page_path(current_user.id), class: 'nav-link'
         - else
           li class="nav-item active"
             = link_to "新規登録", new_user_registration_path, class: 'nav-link'

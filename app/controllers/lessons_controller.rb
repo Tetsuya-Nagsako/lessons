@@ -14,7 +14,6 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1 or /lessons/1.json
   def show
-    @lesson = Lesson.find(params[:id])
   end
 
   # GET /lessons/new
@@ -24,7 +23,6 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
-    @lesson = Lesson.find(params[:id])
   end
 
   # POST /lessons or /lessons.json
