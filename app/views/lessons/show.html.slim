@@ -1,7 +1,9 @@
 .main
   .container
     = render 'layouts/flash_messages'
-    
+    p
+      strong 投稿者:
+      = @user.name
     p
       strong Description:
       = @lesson.description
