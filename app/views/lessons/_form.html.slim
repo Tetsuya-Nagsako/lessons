@@ -6,11 +6,9 @@
           h2.text-center 『レッスンを投稿する』
           = form_for @lesson do |f|
               - if @lesson.errors.any?
-                #error_explanation
-                  h2 = "#{pluralize(@lesson.errors.count, "error")} prohibited this lesson from being saved:"
-                  ul
-                    - @lesson.errors.full_messages.each do |message|
-                      li = message
+                - @lesson.errors.full_messages.each do |message|
+                  h4.alert.alert-danger role="alert"
+                    = message
             
               .form-group
                 = f.label :レッスン内容・受講方法について（なるべく詳細に）
@@ -18,6 +16,9 @@
               .form-group
                 = f.label :イメージ画像
                 = f.file_field :image
+                .form-group
+                = f.label :受講料（円）
+                = f.number_field :price, step: 100, min: 100, class: "form-control"
               .form-group
                 = f.label :レッスン開始時間
                 br

@@ -12,7 +12,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create({
       customer: customer.id,
-      amount: 100,
+      amount: @lesson.price,
       description: '商品名:#{@lesson.description}',
       currency: 'jpy',
     })

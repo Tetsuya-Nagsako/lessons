@@ -37,7 +37,7 @@
 
 .table-img {
   height: 350px;
-  width: 400px;
+  width: 380px;
   position: relative;
 }
 
@@ -52,9 +52,18 @@
 }
 
 .table-description {
-  width: 400px;
+  width: 380px;
+}
+
+.table-price {
+  width: 80px;
 }
 
 .show-img > img{
   width: 500px;
+}
+
+//レッスン投稿画面
+.lesson_new_wrapper {
+  padding-top: 40px;
 }

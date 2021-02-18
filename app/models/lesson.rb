@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
-  validates :description, presence: true, length: { minimum: 1, maximum: 100}
+  validates :description, presence: true, length: { minimum: 1, maximum: 200}
+  validates :price, presence: true
   validates :time_information, presence: true
 
   belongs_to :user
