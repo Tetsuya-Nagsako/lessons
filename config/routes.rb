@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   root "top_pages#top"
   get 'top_pages/help'
-  
-  resources :pages
-  post 'pages/new', to: "pages#create"
+  get 'top_pages/home'
   
   resources :lessons do
     collection do
