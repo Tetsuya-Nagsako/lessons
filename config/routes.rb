@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'top_pages/help'
   get 'top_pages/home'
   
+  
   resources :lessons do
     collection do
       get :user_index
@@ -12,4 +13,8 @@ Rails.application.routes.draw do
   post "lessons/:id/charge", to: "charges#create", as: "charge"
   
   devise_for :users
+  
+  scope :mypage do
+    resources :users
+  end
 end

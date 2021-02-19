@@ -1,9 +1,12 @@
 class Lesson < ApplicationRecord
+  validates :title, presence: true, length: { minimum: 1, maximum: 30}
   validates :description, presence: true, length: { minimum: 1, maximum: 200}
   validates :price, presence: true
   validates :time_information, presence: true
 
   belongs_to :user
+  has_one :payment
+  has_one :payment_user, through: :payment, source: 'user'
 
   mount_uploader :image, ImagesUploader
   

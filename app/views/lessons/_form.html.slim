@@ -3,13 +3,18 @@
     .container
       .row
         div class="col-md-6 col-md-offset-3"
-          h2.text-center 『レッスンを投稿する』
+          - if @lesson.description
+            h2.text-center 『レッスンを編集する』
+          - else 
+            h2.text-center 『レッスンを投稿する』
           = form_for @lesson do |f|
               - if @lesson.errors.any?
                 - @lesson.errors.full_messages.each do |message|
                   h4.alert.alert-danger role="alert"
                     = message
-            
+              .form-group
+                = f.label :レッスンタイトル
+                = f.text_field :title, class: "form-control"
               .form-group
                 = f.label :レッスン内容・受講方法について（なるべく詳細に）
                 = f.text_area :description, class: "form-control"

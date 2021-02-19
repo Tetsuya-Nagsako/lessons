@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   
   has_many :lessons
+  has_many :payments
+  has_many :payment_lessons, through: :payments, source: 'lesson'
 end

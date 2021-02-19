@@ -2,16 +2,22 @@
   .container
     = render 'layouts/flash_messages'
     p
-      strong 投稿者:
+      strong 投稿者:　
       = @user.name
     p
-      strong Description:
+      strong タイトル:　
+      = @lesson.title
+    p
+      strong 内容・詳細事項:　
       = @lesson.description
     p.show-img
-      strong Image:
+      strong イメージ画像:
       = image_tag @lesson.image.url
     p
-      strong Time information:
+      strong 受講料（円）:　
+      = @lesson.price
+    p
+      strong 開始時間:
       = @lesson.lesson_time
       
     = form_tag charge_path(@lesson) do

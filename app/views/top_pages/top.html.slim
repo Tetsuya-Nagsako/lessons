@@ -6,4 +6,4 @@
       = link_to 'レッスンを見てみる', top_pages_home_path
     - if current_user
       .top_links_mypagelink
-        = link_to 'マイページへ', '#'
+        = link_to 'マイページへ', user_path(current_user.id)

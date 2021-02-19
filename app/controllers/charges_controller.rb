@@ -13,9 +13,11 @@ class ChargesController < ApplicationController
     charge = Stripe::Charge.create({
       customer: customer.id,
       amount: @lesson.price,
-      description: '商品名:#{@lesson.description}',
+      description: "商品名:#{@lesson.title}",
       currency: 'jpy',
     })
+    
+    binding.pry
     
     redirect_to lesson_path(params[:id]), notice: "レッスンを購入しました！"
   

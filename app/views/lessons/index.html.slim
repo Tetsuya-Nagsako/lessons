@@ -6,20 +6,21 @@
     table class="table"
       thead class="thead-light"
         tr
+          th タイトル
           th イメージ画像
           th 内容・詳細事項
           th 開始時間
           th 受講料（円）
           th
-          th
     
       tbody
         - @lessons.each do |lesson|
           tr
-            td class="table-img" = image_tag lesson.image.url
+            td class="table-title" = lesson.title
+            td class="table-img" = link_to(image_tag(lesson.image.url), lesson) 
             td class="table-description" = lesson.description
-            td class="table-price" = lesson.lesson_time
-            td = lesson.price
+            td  = lesson.lesson_time
+            td class="table-price"= lesson.price
             - if current_user
               td = link_to 'Show', lesson
             - if current_user && current_user.id == lesson.user.id
