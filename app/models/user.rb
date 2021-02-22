@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :lessons
   has_many :payments
   has_many :payment_lessons, through: :payments, source: 'lesson'
+  has_many :comments
 end

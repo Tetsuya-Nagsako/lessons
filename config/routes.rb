@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get :user_index
     end
+    resources :comments
   end
   
   post "lessons/:id/charge", to: "charges#create", as: "charge"

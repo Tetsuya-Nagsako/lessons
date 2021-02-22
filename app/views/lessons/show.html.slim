@@ -36,3 +36,13 @@
       =< link_to 'Destroy', @lesson, data: { confirm: '本当によろしいですか' }, method: :delete
       br
     = link_to 'レッスン一覧へ', lessons_path
+
+    
+    - @lesson.comments.each do |comment|
+        ul.comment-text
+          = comment.content
+          - if current_user.id == comment.user_id
+            = link_to lesson_comment_path(@lesson.id,comment.id), method: :delete do
+              = image_tag 'icons/trash.png', class: 'topic-index-icon-trash'
+    br
+    = link_to 'コメントを投稿する', new_lesson_comment_path(@lesson)

@@ -7,6 +7,7 @@ class Lesson < ApplicationRecord
   belongs_to :user
   has_one :payment
   has_one :payment_user, through: :payment, source: 'user'
+  has_many :comments
 
   mount_uploader :image, ImagesUploader
   

@@ -67,7 +67,19 @@
   width: 500px;
 }
 
+.topic-index-icon-trash {
+  width: 18px;
+  height: 16px;
+  margin-left: auto;
+  margin-bottom: 14px;
+}
+
 //レッスン投稿画面
 .lesson_new_wrapper {
   padding-top: 40px;
+}
+
+//コメント投稿画面
+.comment_new_wrapper {
+  padding-top: 140px;
 }
