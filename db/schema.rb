@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_085004) do
+ActiveRecord::Schema.define(version: 2021_02_22_024432) do
 
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_085004) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "name"
-    t.integer "creditcard"
+    t.integer "sales"
     t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

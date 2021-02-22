@@ -34,6 +34,14 @@ class ChargesController < ApplicationController
     @lesson.bought_user = current_user.id
     @lesson.save!
     
+    user = User.find(@lesson.user_id)
+    if user.sales.blank?
+      user.sales = @lesson.price * 0.9
+    else
+      user.sales = user.sales + @lesson.price * 0.9
+    end
+    user.save!
+    
     redirect_to lesson_path(params[:id]), notice: "レッスンを購入しました！"
   
   rescue Stripe::CardError => e

@@ -1,6 +1,6 @@
 .main
  .container
-    h2 #{current_user.name}
-    h3 売上：
-    h4 購入済み金額：
+    h3 名前：#{current_user.name}
+    h3 売上：#{@user}（円）
+    h6 ※受講料の９０％が売り上げに反映されます
     = link_to '投稿したLesson一覧', user_index_lessons_path

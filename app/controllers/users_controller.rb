@@ -4,7 +4,11 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
     
-    @payment = Payment.all.find_by(user_id: current_user.id)
+    if current_user.sales.blank?
+      @user = 0
+    else
+      @user = current_user.sales
+    end
     
   end
 end
