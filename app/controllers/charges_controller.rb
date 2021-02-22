@@ -17,7 +17,22 @@ class ChargesController < ApplicationController
       currency: 'jpy',
     })
     
-    binding.pry
+    
+    payment = Payment.new
+    payment.user_id = current_user.id
+    payment.lesson_id = @lesson.id
+    payment.charge_id = charge.id
+    payment.charge_amount = @lesson.price
+    payment.currency = charge.currency
+    payment.charge_description = charge.description
+    payment.receipt_url = charge.receipt_url
+    payment.customer_id = charge.customer
+    payment.email = current_user.email
+    payment.payment_date = Time.current
+    payment.save!
+    
+    @lesson.bought_user = current_user.id
+    @lesson.save!
     
     redirect_to lesson_path(params[:id]), notice: "レッスンを購入しました！"
   
@@ -25,4 +40,5 @@ class ChargesController < ApplicationController
     flash[:error] = e.message
     redirect_to charge_path
   end
+  
 end

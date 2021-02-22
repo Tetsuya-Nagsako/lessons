@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_030736) do
+ActiveRecord::Schema.define(version: 2021_02_19_085004) do
 
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -21,17 +21,19 @@ ActiveRecord::Schema.define(version: 2021_02_19_030736) do
     t.datetime "updated_at", null: false
     t.integer "price"
     t.string "title"
+    t.bigint "bought_user"
+    t.index ["bought_user"], name: "fk_rails_1090baa858"
   end
 
   create_table "payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "lesson_id"
-    t.integer "charge_id"
+    t.string "charge_id"
     t.integer "charge_amount"
     t.string "currency"
     t.string "charge_description"
     t.string "receipt_url"
-    t.integer "customer_id"
+    t.string "customer_id"
     t.string "email"
     t.datetime "payment_date"
     t.datetime "created_at", null: false
@@ -57,4 +59,5 @@ ActiveRecord::Schema.define(version: 2021_02_19_030736) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lessons", "users", column: "bought_user"
 end

@@ -19,14 +19,17 @@
     p
       strong 開始時間:
       = @lesson.lesson_time
-      
-    = form_tag charge_path(@lesson) do
-      script.stripe-button data-amount="#{@lesson.price}\
-      " data-currency="jpy" data-description="クレジット決済\
-      " data-key="#{Rails.application.credentials.stripe[:public_key]}" data-locale="auto" data-name="#{@lesson.description}を購入\
-      " data-email="#{current_user.email}" data-label="購入する\
-      " data-allow-remember-me="false" src="https://checkout.stripe.com/checkout.js"
     
+    - if @lesson.bought_user
+      p.badge.badge-danger すでに誰かが購入済み。購入できません
+    -else
+      = form_tag charge_path(@lesson) do
+        script.stripe-button data-amount="#{@lesson.price}\
+        " data-currency="jpy" data-description="クレジット決済\
+        " data-key="#{Rails.application.credentials.stripe[:public_key]}" data-locale="auto" data-name="#{@lesson.title}を購入\
+        " data-email="#{current_user.email}" data-label="購入する\
+        " data-allow-remember-me="false" src="https://checkout.stripe.com/checkout.js"
+    br
     - if current_user.id == @lesson.user.id
       => link_to 'Edit', edit_lesson_path(@lesson)
       '|

@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views', '~> 1.0'
 
