@@ -67,11 +67,22 @@
   width: 500px;
 }
 
+//レッスンshow画面
+.comment-user-name {
+  display: inline-block;
+  padding-right: 30px;
+  font-size: 4pt;
+}
+
+.comment-content {
+  display: inline-block;
+}
+
 .topic-index-icon-trash {
   width: 18px;
   height: 16px;
-  margin-left: auto;
-  margin-bottom: 14px;
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 //レッスン投稿画面

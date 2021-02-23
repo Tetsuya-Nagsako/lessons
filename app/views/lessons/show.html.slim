@@ -37,10 +37,11 @@
       br
     = link_to 'レッスン一覧へ', lessons_path
 
-    
+    h5 コメント一覧
     - @lesson.comments.each do |comment|
-        ul.comment-text
-          = comment.content
+        ul.comment
+          .comment-user-name.font-weight-light.text-black-50 = comment.user.name
+          .comment-content = comment.content
           - if current_user.id == comment.user_id
             = link_to lesson_comment_path(@lesson.id,comment.id), method: :delete do
               = image_tag 'icons/trash.png', class: 'topic-index-icon-trash'

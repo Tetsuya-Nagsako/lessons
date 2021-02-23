@@ -1,7 +1,13 @@
 class Lesson < ApplicationRecord
-  validates :title, presence: true, length: { minimum: 1, maximum: 30}
-  validates :description, presence: true, length: { minimum: 1, maximum: 200}
+  validates :title,  length: { minimum: 1, maximum: 30}
+  validates :description,  length: { minimum: 1, maximum: 200}
   validates :price, presence: true
+  validate :only_100_multiple
+  def only_100_multiple
+    if price.blank? || price % 100 != 0
+      errors.add(:price, ": 価格付けは100円単位でお願いします")
+    end
+  end
   validates :time_information, presence: true
 
   belongs_to :user

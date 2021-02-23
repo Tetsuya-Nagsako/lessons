@@ -9,26 +9,23 @@
           - else 
             h3.text-center 『レッスンを投稿する』
           = form_for @lesson do |f|
-              - if @lesson.errors.any?
-                - @lesson.errors.full_messages.each do |message|
-                  h4.alert.alert-danger role="alert"
-                    = message
+            = lesson_error_messages!
+            .form-group
+              = f.label :レッスンタイトル
+              = f.text_field :title, class: "form-control"
+            .form-group
+              = f.label :レッスン内容・受講方法について（なるべく詳細に）
+              = f.text_area :description, class: "form-control"
+            .form-group
+              = f.label :イメージ画像
+              = f.file_field :image
               .form-group
-                = f.label :レッスンタイトル
-                = f.text_field :title, class: "form-control"
-              .form-group
-                = f.label :レッスン内容・受講方法について（なるべく詳細に）
-                = f.text_area :description, class: "form-control"
-              .form-group
-                = f.label :イメージ画像
-                = f.file_field :image
-                .form-group
-                = f.label :受講料（円）
-                = f.number_field :price, step: 100, min: 100, class: "form-control"
-              .form-group
-                = f.label :レッスン開始時間
-                br
-                = f.datetime_select :time_information, class: "form-control"
-              .actions = f.submit '投 稿', class: 'btn btn-info btn-lg btn-block'
+              = f.label :受講料（円）
+              = f.number_field :price, step: 100, min: 100, class: "form-control"
+            .form-group
+              = f.label :レッスン開始時間
               br
-              = link_to 'Back', :back
+              = f.datetime_select :time_information, class: "form-control"
+            .actions = f.submit '投 稿', class: 'btn btn-info btn-lg btn-block'
+            br
+            = link_to 'Back', :back

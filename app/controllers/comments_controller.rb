@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to lesson_path(@comment.lesson_id), flash: {success: 'コメントを投稿しました'}
     else
-      flash.now[:danger] = 'コメント投稿に失敗しました'
       render :new
     end
   end
