@@ -1,5 +1,14 @@
 @import "bootstrap";
 
+body {
+  font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+h1,h2,h3 {
+  padding-top: 10px;
+  color: #a3b2c9;
+}
+
 .container-my-devise {
   @extend .container-fluid;
   max-width: 576px;
@@ -14,6 +23,12 @@
   @extend .alert-danger;
 }
 
+//header
+.navbar-brand {
+  width: 120px;
+  height: 80px;
+  margin-left: 20px;
+}
 
 .navbar-nav {
   padding: 15px 40px;
@@ -23,7 +38,11 @@
 .nav-item {
   padding-right: 40px;
 }
+.nav-link {
+  color: #a3b2c9;
+}
 
+//main
 .main {
   .container {
     padding-top: 100px;
@@ -33,6 +52,69 @@
 
 .text-center {
   padding-bottom: 20px;
+}
+
+//HOME画面
+.home_wrapper {
+  .main {
+    .container {
+      .home-text {
+        padding-bottom: 20px;
+      }
+      .contents {
+        position: relative;
+      }
+      ul {
+         @media screen and (min-width:480px) {
+          position: absolute;
+           top: 180px;
+          display: inline-block;
+         }
+        //z-index: 1;
+        width: 220px;
+        background: #f1f8ff;
+        box-shadow: 0px 0px 0px 10px #f1f8ff;/*線の外側*/
+        border: dashed 2px #668ad8;/*破線*/
+        border-radius: 9px;
+        margin-left: 10px;/*はみ出ないように調整*/
+        margin-right: 10px;/*はみ出ないように調整*/
+        padding: 0.5em 0.5em 0.5em 2em;
+      }
+      
+      li {
+        line-height: 1.5;
+        padding: 0.5em 0;
+      }
+    }
+  }
+}
+
+.home_img {
+  width: 60%;
+  max-width: 60%;
+  height: auto;
+  @media screen and (min-width:480px) {
+    position: relative;
+  }
+    left: 30%;
+}
+
+.top_img {
+  @media screen and (min-width:480px) {
+    display: inline-block;
+    position: relative;
+      left: 40%;
+  }
+  width: 50%;
+  max-width: 60%;
+  height: auto;
+}
+
+
+
+//lesson index画面
+.show_edit_destroy {
+  width: 60px;
 }
 
 .table-img {
@@ -68,6 +150,16 @@
 }
 
 //レッスンshow画面
+.home_link {
+  display: inline-block;
+}
+
+.home_nav_img {
+  display: inline-block;
+  width: 70px;
+}
+
+
 .comment-user-name {
   display: inline-block;
   padding-right: 30px;
@@ -85,6 +177,34 @@
   margin-bottom: 5px;
 }
 
+.lesson_show_wrapper {
+  .main {
+    .container {
+      .comment {
+        padding-inline-start: 0.5em;
+        ul {
+          padding: 0;
+          position: relative;
+        }
+        
+        li {
+          color: black;
+          border-left: solid 8px #349eeb;/*左側の線*/
+          background: whitesmoke;/*背景色*/
+          margin-bottom: 5px;/*下のバーとの余白*/
+          line-height: 1.5;
+          border-radius: 0 15px 15px 0;/*右側の角だけ丸く*/
+          padding: 0.5em;
+          list-style-type: none!important;
+        }
+      }
+    }
+  }
+}
+
+
+
+
 //レッスン投稿画面
 .lesson_new_wrapper {
   padding-top: 40px;
@@ -93,4 +213,9 @@
 //コメント投稿画面
 .comment_new_wrapper {
   padding-top: 140px;
+}
+
+//My page
+.card {
+  max-width: 400px;
 }

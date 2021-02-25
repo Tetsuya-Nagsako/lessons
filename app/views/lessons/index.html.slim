@@ -2,7 +2,8 @@
   .container
     = render 'layouts/flash_messages'
     h1 Lessons list
-    = link_to 'HOME', top_pages_home_path
+    = link_to 'HOME', top_pages_home_path, class: 'home_link'
+    = link_to image_tag('insert/home_nav.png', class: 'home_nav_img'), top_pages_home_path
     
     table class="table table-responsive"
       thead
@@ -25,7 +26,7 @@
             td  = lesson.lesson_time
             td class="table-price"= lesson.price
             - if current_user
-              td = link_to 'Show', lesson
+              td class="show_edit_destroy" = link_to '詳細', lesson
             - if current_user && current_user.id == lesson.user.id
-              td = link_to 'Edit', edit_lesson_path(lesson)
-              td = link_to 'Destroy', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete
+              td class="show_edit_destroy" = link_to '編集', edit_lesson_path(lesson)
+              td class="show_edit_destroy" = link_to '削除', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete

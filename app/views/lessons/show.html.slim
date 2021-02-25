@@ -1,49 +1,54 @@
-.main
-  .container
-    = render 'layouts/flash_messages'
-    p
-      strong 投稿者:　
-      = @user.name
-    p
-      strong タイトル:　
-      = @lesson.title
-    p
-      strong 内容・詳細事項:　
-      = @lesson.description
-    p.show-img
-      strong イメージ画像:
-      = image_tag @lesson.image.url
-    p
-      strong 受講料（円）:　
-      = @lesson.price
-    p
-      strong 開始時間:
-      = @lesson.lesson_time
-    
-    - if @lesson.bought_user
-      p.badge.badge-danger すでに誰かが購入済み。購入できません
-    -else
-      = form_tag charge_path(@lesson) do
-        script.stripe-button data-amount="#{@lesson.price}\
-        " data-currency="jpy" data-description="クレジット決済\
-        " data-key="#{Rails.application.credentials.stripe[:public_key]}" data-locale="auto" data-name="#{@lesson.title}を購入\
-        " data-email="#{current_user.email}" data-label="購入する\
-        " data-allow-remember-me="false" src="https://checkout.stripe.com/checkout.js"
-    br
-    - if current_user.id == @lesson.user.id
-      => link_to 'Edit', edit_lesson_path(@lesson)
-      '|
-      =< link_to 'Destroy', @lesson, data: { confirm: '本当によろしいですか' }, method: :delete
+.lesson_show_wrapper
+  .main
+    .container
+      = render 'layouts/flash_messages'
+      p
+        strong 投稿者:　
+        = @user.name
+      p
+        strong タイトル:　
+        = @lesson.title
+      p
+        strong 内容・詳細事項:　
+        = @lesson.description
+      p.show-img
+        strong イメージ画像:
+        = image_tag @lesson.image.url
+      p
+        strong 受講料（円）:　
+        = @lesson.price
+      p
+        strong 開始時間:
+        = @lesson.lesson_time
+      
+      - if @lesson.bought_user
+        p.badge.badge-danger すでに誰かが購入済み。購入できません
+      -else
+        = form_tag charge_path(@lesson) do
+          script.stripe-button data-amount="#{@lesson.price}\
+          " data-currency="jpy" data-description="クレジット決済\
+          " data-key="#{Rails.application.credentials.stripe[:public_key]}" data-locale="auto" data-name="#{@lesson.title}を購入\
+          " data-email="#{current_user.email}" data-label="購入する\
+          " data-allow-remember-me="false" src="https://checkout.stripe.com/checkout.js"
       br
-    = link_to 'レッスン一覧へ', lessons_path
-
-    h5 コメント一覧
-    - @lesson.comments.each do |comment|
-        ul.comment
-          .comment-user-name.font-weight-light.text-black-50 = comment.user.name
-          .comment-content = comment.content
-          - if current_user.id == comment.user_id
-            = link_to lesson_comment_path(@lesson.id,comment.id), method: :delete do
-              = image_tag 'icons/trash.png', class: 'topic-index-icon-trash'
-    br
-    = link_to 'コメントを投稿する', new_lesson_comment_path(@lesson)
+      - if current_user.id == @lesson.user.id
+        => link_to '編集', edit_lesson_path(@lesson)
+        '|
+        =< link_to '削除', @lesson, data: { confirm: '本当によろしいですか' }, method: :delete
+        br
+      = link_to 'レッスン一覧へ', lessons_path
+      
+      br
+      br
+  
+      h5 コメント一覧
+      - @lesson.comments.each do |comment|
+          ul.comment
+            .comment-user-name.text-black-50 = comment.user.name
+            li.comment-content = comment.content
+            - if current_user.id == comment.user_id
+              = link_to lesson_comment_path(@lesson.id,comment.id), method: :delete do
+                = image_tag 'icons/trash.png', class: 'topic-index-icon-trash'
+      br
+      - if @lesson.bought_user.blank?
+        = link_to 'コメントを投稿する', new_lesson_comment_path(@lesson)

@@ -1,6 +1,15 @@
 .main
  .container
-    h3 名前：#{current_user.name}
-    h3 売上：#{@user}（円）
-    h6 ※受講料の９０％が売り上げに反映されます
-    = link_to '投稿したLesson一覧', user_index_lessons_path
+   h1 My Page 
+   .card
+    .card-header 名前：#{current_user.name}
+    .card-body
+      h4 売上：#{@user}（円）
+      p.text-black-50 ※受講料の90％が売り上げに反映されます
+   
+   br
+   = link_to '投稿したLesson一覧', user_index_lessons_path
+   br
+   br
+   - if user_signed_in?
+    = link_to 'Lessonを投稿する', new_lesson_path

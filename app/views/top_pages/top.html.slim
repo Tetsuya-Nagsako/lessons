@@ -1,9 +1,11 @@
-.main
-  .container
-    = render 'layouts/flash_messages'
-    h1 Landing page
-    .top_links_lessonlink
-      = link_to 'レッスンを見てみる', top_pages_home_path
-    - if current_user
-      .top_links_mypagelink
-        = link_to 'マイページへ', user_path(current_user.id)
+.home_wrapper
+  .main
+    .container
+      = render 'layouts/flash_messages'
+      h1 Landing page
+      ul
+        li = link_to 'レッスンを見てみる', top_pages_home_path
+        br
+        - if current_user
+          li = link_to 'マイページへ', user_path(current_user.id)
+      = image_tag "insert/home.png", class: 'home_img'

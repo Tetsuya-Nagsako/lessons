@@ -1,18 +1,12 @@
-.main
-  .container
-    = render 'layouts/flash_messages'
-    h1 HOME
-    = link_to '新着Lesson', lessons_path
-    
-    h3 カテゴリ
-    p 手芸
-    p 音楽
-    p ...
-    - if user_signed_in?
-     = link_to '投稿したLesson一覧', user_index_lessons_path
-     br
-    
-    - if user_signed_in?
-     = link_to 'Lessonを投稿する', new_lesson_path
-     
+.home_wrapper
+  .main
+    .container
+      = render 'layouts/flash_messages'
+      h1.home-text HOME
+      ul
+        li = link_to '新着Lesson', lessons_path
+        br
+        - if user_signed_in?
+          li = link_to 'Lessonを投稿する', new_lesson_path
+      = image_tag "insert/top.png", class: 'top_img'
      
