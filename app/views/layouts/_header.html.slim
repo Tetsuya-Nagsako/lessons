@@ -19,4 +19,6 @@ header
             = link_to "新規登録", new_user_registration_path, class: 'nav-link'
           li class="nav-item"
             = link_to "ログイン", new_user_session_path, class: 'nav-link'
+          li class="nav-item"
+            = link_to 'ゲストログイン（閲覧用）', top_pages_guest_sign_in_path, method: :post, class: 'nav-link'
     

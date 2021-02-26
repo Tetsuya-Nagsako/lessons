@@ -1,15 +1,21 @@
-.main
- .container
-   h1 My Page 
-   .card
-    .card-header 名前：#{current_user.name}
-    .card-body
-      h4 売上：#{@user}（円）
-      p.text-black-50 ※受講料の90％が売り上げに反映されます
-   
-   br
-   = link_to '投稿したLesson一覧', user_index_lessons_path
-   br
-   br
-   - if user_signed_in?
-    = link_to 'Lessonを投稿する', new_lesson_path
+  .user_wrapper
+    .main
+      .container
+        h1 My Page 
+        .card
+          .card-header 名前：#{current_user.name}
+          .card-body
+            h4 売上：#{@user.sales}（円）
+            p.text-black-50 ※受講料の90％が売り上げに反映されます
+
+        br
+        = link_to '投稿したLesson一覧', user_index_lessons_path
+        br
+        br
+        = link_to 'Lessonを投稿する', new_lesson_path
+        .bought_lesson
+          h4 購入したレッスン（受講予定）
+          - @lesson.each do |lesson|
+            ul
+              li = lesson.title + ' , 受講料 ' + lesson.price.to_s + '( 円)'
+              = link_to '受講完了', attending_complete_path(lesson.id), method: :post, class: "button"

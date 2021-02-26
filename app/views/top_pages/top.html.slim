@@ -2,10 +2,15 @@
   .main
     .container
       = render 'layouts/flash_messages'
-      h1 Landing page
-      ul
-        li = link_to 'レッスンを見てみる', top_pages_home_path
-        br
-        - if current_user
-          li = link_to 'マイページへ', user_path(current_user.id)
+      h1.home-text Landing page
+      .content
+        ul
+          li = link_to 'レッスンを見てみる', top_pages_home_path
+          br
+          - if current_user
+            li = link_to 'マイページへ', user_path(current_user.id)
+      .sentence
+        p 好きなイラスト、得意なイラストでお金を稼ごう！
+        p lessonsは自由にイラストを学べ、教えることのできるWebサイトです。
+        p おうちで受講でき、疑問に思ったことを、その場で質問できます。
       = image_tag "insert/home.png", class: 'home_img'

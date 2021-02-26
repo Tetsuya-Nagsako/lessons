@@ -4,7 +4,7 @@
       = render 'layouts/flash_messages'
       p
         strong 投稿者:　
-        = @user.name
+        = @user.name + "　先生"
       p
         strong タイトル:　
         = @lesson.title
@@ -50,5 +50,7 @@
               = link_to lesson_comment_path(@lesson.id,comment.id), method: :delete do
                 = image_tag 'icons/trash.png', class: 'topic-index-icon-trash'
       br
-      - if @lesson.bought_user.blank?
+      - if @lesson.bought_user.blank? || @lesson.bought_user == current_user.id || current_user.id == @lesson.user_id
         = link_to 'コメントを投稿する', new_lesson_comment_path(@lesson)
+      - else
+        p.badge.badge-danger すでに誰かが購入済み。該当ユーザーしかコメントできません。

@@ -32,21 +32,30 @@ class ChargesController < ApplicationController
     payment.save!
     
     @lesson.bought_user = current_user.id
+    @lesson.status = 1
     @lesson.save!
     
-    user = User.find(@lesson.user_id)
-    if user.sales.blank?
-      user.sales = @lesson.price * 0.9
-    else
-      user.sales = user.sales + @lesson.price * 0.9
-    end
-    user.save!
-    
-    redirect_to lesson_path(params[:id]), notice: "レッスンを購入しました！"
+    redirect_to lesson_path(params[:id]), notice: "レッスンを購入しました！実際に受講しましたら、マイページから受講完了を押してください。"
   
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to charge_path
+  end
+  
+  def attending_complete
+    lesson = Lesson.find(params[:id])
+    user = User.find(lesson.user_id)
+    if user.sales.blank?
+      user.sales = lesson.price * 0.9
+    else
+      user.sales = user.sales + lesson.price * 0.9
+    end
+    user.save!
+    
+    lesson.status = 2
+    lesson.save!
+    
+    redirect_to user_path(current_user.id)
   end
   
 end

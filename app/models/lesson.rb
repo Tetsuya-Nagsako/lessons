@@ -13,7 +13,7 @@ class Lesson < ApplicationRecord
   belongs_to :user
   has_one :payment
   has_one :payment_user, through: :payment, source: 'user'
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   mount_uploader :image, ImagesUploader
   

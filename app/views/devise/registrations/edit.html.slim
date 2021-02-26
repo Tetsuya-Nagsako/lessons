@@ -1,7 +1,7 @@
 .main
   .container
     .container-my-devise
-      h1 アカウント編集
+      h2 アカウント編集
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = bootstrap_devise_error_messages!
         .form-group

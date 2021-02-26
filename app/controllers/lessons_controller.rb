@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: %i[ show edit update destroy ]
+  before_action :user_confirm, only: %i[ edit update destroy ]
 
   # GET /lessons or /lessons.json
   def index
@@ -67,6 +68,12 @@ class LessonsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
       @lesson = Lesson.find(params[:id])
+    end
+    
+    def user_confirm
+      unless current_user.id == @lesson.user_id
+        redirect_to root_path
+      end
     end
 
     # Only allow a list of trusted parameters through.

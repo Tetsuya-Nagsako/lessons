@@ -1,34 +1,35 @@
-.main
-  .container
-    h1 My Lessons list
-    = link_to 'HOME', top_pages_home_path
-    
-    table class="table table-responsive"
-      thead
-        tr
-          th タイトル
-          th イメージ画像
-          th 内容・詳細事項
-          th 開始時間
-          th 受講料（円）
-          th
-          th
-          th
-    
-      tbody
-        - @lessons.each do |lesson|
+.lesson_user_index_wrapper
+  .main
+    .container
+      h1 My Lessons list
+      = link_to 'HOME', top_pages_home_path
+      
+      table class="table table-responsive"
+        thead
           tr
-            td class="table-title" = lesson.title
-            td class="table-img" = link_to(image_tag(lesson.image.url), lesson) 
-            td class="table-description" = lesson.description
-            td  = lesson.lesson_time
-            td class="table-price"= lesson.price
-            - if current_user
-              td = link_to 'Show', lesson
-            - if current_user && current_user.id == lesson.user.id
-              td = link_to 'Edit', edit_lesson_path(lesson)
-              td = link_to 'Destroy', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete
-    
-    br
-    
-    = link_to 'Lessonを投稿する', new_lesson_path
+            th タイトル
+            th イメージ画像
+            th 内容・詳細事項
+            th 開始時間
+            th 受講料（円）
+            th
+            th
+            th
+      
+        tbody
+          - @lessons.each do |lesson|
+            tr
+              td class="table-title" = lesson.title
+              td class="table-img" = link_to(image_tag(lesson.image.url), lesson) 
+              td class="table-description" = lesson.description
+              td  = lesson.lesson_time
+              td class="table-price"= lesson.price
+              - if current_user
+                td = link_to 'Show', lesson
+              - if current_user && current_user.id == lesson.user.id
+                td = link_to 'Edit', edit_lesson_path(lesson)
+                td = link_to 'Destroy', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete
+      
+      br
+      
+      = link_to 'Lessonを投稿する', new_lesson_path

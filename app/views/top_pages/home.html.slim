@@ -3,10 +3,14 @@
     .container
       = render 'layouts/flash_messages'
       h1.home-text HOME
-      ul
-        li = link_to '新着Lesson', lessons_path
-        br
-        - if user_signed_in?
-          li = link_to 'Lessonを投稿する', new_lesson_path
+      .content
+        ul
+          li = link_to '新着Lesson', lessons_path
+          br
+          - if user_signed_in?
+            li = link_to 'Lessonを投稿する', new_lesson_path
+      .sentence
+        p 誰かに教えてあげられることを、好きな価格で投稿でき、
+        p 習いたいレッスンを探して、受講できます。
       = image_tag "insert/top.png", class: 'top_img'
      
