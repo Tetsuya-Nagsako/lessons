@@ -42,6 +42,7 @@ group :development, :test do
   gem "pry-stack_explorer"
   gem "rspec-rails"
   gem 'dotenv-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -55,5 +56,6 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'factory_bot_rails'
 end
 
