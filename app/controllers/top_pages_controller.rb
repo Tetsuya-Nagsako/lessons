@@ -13,6 +13,7 @@ class TopPagesController < ApplicationController
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now
       user.name = "ゲストユーザー"
+      user.star = 0.0
     end
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'

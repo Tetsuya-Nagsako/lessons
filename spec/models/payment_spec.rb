@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Payment, type: :model do
   describe 'Paymentデータの保守性' do
     before do
-      @user = build(:user)
-      @lesson = build(:lesson, user: @user)
+      @user = create(:user)
+      @lesson = create(:lesson, user: @user)
       @payment = create(:payment, user: @user, lesson: @lesson)
     end
     context 'ユーザーがなくなる場合' do

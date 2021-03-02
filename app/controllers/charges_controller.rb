@@ -52,7 +52,7 @@ class ChargesController < ApplicationController
     end
     user.save!
     
-    lesson.status = 2
+    lesson.status = 3
     lesson.save!
     
     redirect_to user_path(current_user.id)

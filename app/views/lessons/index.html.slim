@@ -22,9 +22,9 @@
           tr
             td class="table-title" = lesson.title
             td class="table-img"
-              = link_to(image_tag(lesson.image.url), lesson) 
+              = link_to(image_tag(lesson.image.url), lesson)
               - if lesson.bought_user?
-                = image_tag "icons/sold_out.png", class: 'top_img'
+                = link_to(image_tag("icons/sold_out.png", class: 'sold_img'), lesson)
             td class="table-description" = lesson.description
             td  = lesson.lesson_time
             td class="table-price"= lesson.price

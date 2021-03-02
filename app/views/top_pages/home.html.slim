@@ -6,7 +6,6 @@
       .content
         ul
           li = link_to '新着Lesson', lessons_path
-          br
           - if user_signed_in?
             li = link_to 'Lessonを投稿する', new_lesson_path
       .sentence

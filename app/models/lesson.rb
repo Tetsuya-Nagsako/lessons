@@ -8,6 +8,7 @@ class Lesson < ApplicationRecord
       errors.add(:price, ": 価格付けは100円単位でお願いします")
     end
   end
+  validates :image, presence: true
   validates :time_information, presence: true
 
   belongs_to :user

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_074826) do
+ActiveRecord::Schema.define(version: 2021_03_01_043011) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_074826) do
     t.string "unconfirmed_email"
     t.string "name"
     t.integer "sales"
-    t.integer "point"
+    t.float "star"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
