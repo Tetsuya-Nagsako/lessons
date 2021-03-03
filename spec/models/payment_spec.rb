@@ -8,8 +8,6 @@ RSpec.describe Payment, type: :model do
       @user = create(:user)
       @lesson = create(:lesson, user: @user)
       @payment = create(:payment, user: @user, lesson: @lesson)
-      let(:image_path) { Rails.root.join('spec/fixtures/logo.png') }
-      let(:image) { Rack::Test::UploadedFile.new(image_path) }
     end
     context 'ユーザーがなくなる場合' do
       it "支払ったユーザーがなくなっても、なくならない" do
