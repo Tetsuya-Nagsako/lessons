@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :payments
   has_many :payment_lessons, through: :payments, source: 'lesson'
   has_many :comments, dependent: :destroy
+  has_many :remittance
 end

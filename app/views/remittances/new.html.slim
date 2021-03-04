@@ -1,0 +1,29 @@
+.remittance_new_wrapper
+  .container
+    .row
+      div class="col-md-3"
+      div class="col-md-6 col-md-offset-3"
+        h2.text-center 売上金の振り込み申請をする
+        = form_with model: @remittance do |f|
+          table.tb03
+            tbody
+              tr
+                td.tbl_03 銀行コード
+                td.tbl_01
+                  span.bnk_area
+                    = f.text_field :bank_code2, id:'bank_code2'
+                    span#bank_name2
+                    span.bnk_clear#bank_code2_clear(style="display: none;")&nbsp;&nbsp;✖
+              tr
+                td.tbl_03 支店コード
+                td.tbl_01
+                  span.bnk_area
+                    = f.text_field :branch_code2, id:'branch_code2'
+                    span#branch_name2
+                    span.bnk_clear#branch_code2_clear(style="display: none;")&nbsp;&nbsp;✖
+              tr
+                td.tbl_03 口座名義
+                td.tbl_01
+                  span.bnk_area
+                    = f.text_field :account_holder, id:'account_holder'
+          = f.submit '申請する'

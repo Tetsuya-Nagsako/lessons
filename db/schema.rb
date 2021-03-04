@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_043011) do
+ActiveRecord::Schema.define(version: 2021_03_04_074857) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 2021_03_01_043011) do
     t.string "customer_id"
     t.string "email"
     t.datetime "payment_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "remittances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "bank_name"
+    t.integer "branch_name"
+    t.string "account_holder"
+    t.integer "bank_account_number"
+    t.integer "transfer_money"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

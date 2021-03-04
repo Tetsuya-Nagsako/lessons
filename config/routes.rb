@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'remittances/new'
   root "top_pages#top"
   get 'top_pages/help'
   get 'top_pages/home'
@@ -12,11 +13,14 @@ Rails.application.routes.draw do
   end
   
   post 'lessons/:id/charge', to: "charges#create", as: "charge"
-  post 'mypage/bought_lesson/:id', to: "charges#attending_complete", as: 'attending_complete'
   
   devise_for :users
   
   scope :mypage do
     resources :users
   end
+  post 'mypage/bought_lesson/:id', to: "charges#attending_complete", as: 'attending_complete'
+
+  resources :remittances
+
 end
