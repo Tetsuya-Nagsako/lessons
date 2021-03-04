@@ -3,11 +3,13 @@
     .container
       = render 'layouts/flash_messages'
       .row
-        .col-md-2
+        .col-md-3
         .col-md-8
           p
             strong 投稿者:　
-            = @user.name + "　先生"
+            = @user.name + " 先生　"
+            = image_tag 'star-on.png', class:"star-on-png"
+            = "#{@user.star}" + "個"
           p
             strong タイトル:　
             = @lesson.title

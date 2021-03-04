@@ -2,8 +2,11 @@
   .main
     .container
       = render 'layouts/flash_messages'
-      h1 Lessons
-      h1.home-text Freedom of learning and teaching Illustrations!!
+      h1 Lessons!!
+      .line
+        .border_bottom
+          h1.top-text Freedom of learning and teaching Illustrations!!
+          .border_right
       .content
         .row
           - if user_signed_in?
@@ -21,7 +24,6 @@
           - if current_user
             li = link_to 'マイページへ', user_path(current_user.id)
         .sentence
-          p 好きなイラスト、得意なイラストでお金を稼ごう！
-          p lessonsは自由にイラストを学べ、教えることのできるWebサイトです。
-          p おうちで受講でき、疑問に思ったことを、その場で質問できます。
+          p あなたの「好き！」を誰かに、誰かの「好き！」をあなたに。。。
+          p 教えてあげられることを投稿し、習いたいレッスンを探そう！
         = image_tag "insert/home.png", class: 'home_img'

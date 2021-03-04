@@ -20,7 +20,7 @@
         h4 購入したレッスン（受講予定）
         - @lesson.each do |lesson|
           ul
-            li = lesson.user.name + '先生 　 ' + 'タイトル : ' + lesson.title + '　  受講料 : ' + lesson.price.to_s + '( 円)'
+            li = lesson.user.name + '先生 　 ' + 'タイトル : ' + lesson.title + '　  受講料 : ' + lesson.price.to_s + '(円)'
             = link_to '受講完了', attending_complete_path(lesson.id), method: :post, class: "button1"
             - if lesson.status == 1
               = form_with model: lesson.user, method: :put do |f|
