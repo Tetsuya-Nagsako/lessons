@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @comment = current_user.comments.new(comment_paramas)
+    @comment = current_user.comments.new(comment_params)
     if @comment.save
       redirect_to lesson_path(@comment.lesson_id), flash: {success: 'コメントを投稿しました'}
     else
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   end
 
   private
-  def comment_paramas
+  def comment_params
     params.require(:comment).permit(:content, :lesson_id, :comment_id)
   end
 end

@@ -10,6 +10,5 @@
           .form-group
             = c.label :content, 'コメント'
             = c.text_area :content, class: 'form-control'
-            
           - if current_user
             = c.submit 'コメントする', class: 'btn btn-black btn-block'

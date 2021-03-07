@@ -15,4 +15,9 @@ module DeviseHelper
     end
     html.html_safe
   end
+  
+  def bought_lesson
+    Lesson.find_by(bought_user: current_user.id)
+  end
+  
 end

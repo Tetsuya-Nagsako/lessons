@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   
   post 'lessons/:id/charge', to: "charges#create", as: "charge"
+  post 'lessons/:id/buy_with_sales', to: "charges#buy_with_sales", as: "buy_with_sales"
   
   devise_for :users
   

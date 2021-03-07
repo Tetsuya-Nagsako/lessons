@@ -10,6 +10,7 @@ class LessonsController < ApplicationController
 
   def user_index
     @lessons = current_user.lessons
+    @lessons = @lessons.order("time_information DESC")
   end
 
 

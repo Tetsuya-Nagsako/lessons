@@ -14,6 +14,7 @@ class TopPagesController < ApplicationController
       user.confirmed_at = Time.now
       user.name = "ゲストユーザー"
       user.star = 0.0
+      user.sales = 5000
     end
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'

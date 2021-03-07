@@ -3,6 +3,7 @@
     .container
       h1 My Lessons list
       = link_to 'HOME', top_pages_home_path
+      = link_to image_tag('insert/home_nav.png', class: 'home_nav_img'), top_pages_home_path
       
       table class="table table-responsive"
         thead
@@ -20,16 +21,22 @@
           - @lessons.each do |lesson|
             tr
               td class="table-title" = lesson.title
-              td class="table-img" = link_to(image_tag(lesson.image.url), lesson) 
+              td class="table-img"
+                - if current_user
+                  = link_to(image_tag(lesson.image.url), lesson)
+                  - if lesson.bought_user?
+                    = link_to(image_tag("icons/sold_out.png", class: 'sold_img'), lesson)
+                - else
+                  = link_to(image_tag(lesson.image.url), new_user_session_path)
+                  - if lesson.bought_user?
+                    = link_to(image_tag("icons/sold_out.png", class: 'sold_img'), new_user_session_path)
               td class="table-description" = lesson.description
               td  = lesson.lesson_time
               td class="table-price"= lesson.price
               - if current_user
-                td = link_to 'Show', lesson
+                td class="show_edit_destroy" = link_to '詳細', lesson
               - if current_user && current_user.id == lesson.user.id
-                td = link_to 'Edit', edit_lesson_path(lesson)
-                td = link_to 'Destroy', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete
-      
+                td class="show_edit_destroy" = link_to '編集', edit_lesson_path(lesson)
+                td class="show_edit_destroy" = link_to '削除', lesson, data: { confirm: '本当に削除して良いですか？' }, method: :delete
       br
-      
       = link_to 'Lessonを投稿する', new_lesson_path

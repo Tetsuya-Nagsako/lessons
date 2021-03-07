@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_074857) do
+ActiveRecord::Schema.define(version: 2021_03_05_091702) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -53,13 +53,14 @@ ActiveRecord::Schema.define(version: 2021_03_04_074857) do
 
   create_table "remittances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "bank_name"
-    t.integer "branch_name"
+    t.text "bank_name"
+    t.text "branch_name"
     t.string "account_holder"
-    t.integer "bank_account_number"
+    t.text "bank_account_number"
     t.integer "transfer_money"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "deposit_type"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -73,8 +74,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_074857) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "name"
-    t.integer "sales"
-    t.float "star"
+    t.integer "sales", default: 0, null: false
+    t.float "star", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

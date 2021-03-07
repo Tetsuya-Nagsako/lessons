@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     lesson = Lesson.find(user_params[:lesson_id])
     lesson.status = 2
     lesson.save!
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user.id), flash: {success: '星を送りました'}
   end
   
   private

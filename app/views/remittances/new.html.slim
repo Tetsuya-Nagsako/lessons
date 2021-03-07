@@ -1,29 +1,60 @@
 .remittance_new_wrapper
   .container
     .row
-      div class="col-md-3"
-      div class="col-md-6 col-md-offset-3"
+      div class="col-md-2"
+      div class="col-md-8 col-md-offset-2"
         h2.text-center 売上金の振り込み申請をする
+        p.text-center.information 振込申請は、5000円以上から可能です。
+        p.text-center.information 振込手数料は、ユーザー様のご負担となります。振り込み元は三井住友銀行です。
+        p.text-center 入金日は、申請から約２週間後です。
+    .row
+      div class="col-md-4"
+      div class="col-md-5"
         = form_with model: @remittance do |f|
+          = remittance_error_messages!
           table.tb03
             tbody
               tr
                 td.tbl_03 銀行コード
                 td.tbl_01
                   span.bnk_area
-                    = f.text_field :bank_code2, id:'bank_code2'
+                    = f.text_field :bank_name, id:'bank_code2', placeholder:"例：0001"
                     span#bank_name2
                     span.bnk_clear#bank_code2_clear(style="display: none;")&nbsp;&nbsp;✖
               tr
                 td.tbl_03 支店コード
                 td.tbl_01
                   span.bnk_area
-                    = f.text_field :branch_code2, id:'branch_code2'
+                    = f.text_field :branch_name, id:'branch_code2', placeholder:"例：310"
                     span#branch_name2
                     span.bnk_clear#branch_code2_clear(style="display: none;")&nbsp;&nbsp;✖
+              tr
+                td.tbl_03 預金種別
+                td.tbl_01
+                  span.bnk_area
+                    .form-check
+                      = f.radio_button :deposit_type, '普通', class: 'form-check-input', checked: true
+                      = f.label :deposit_type, '普通', class: 'form-check-label'
+                      = f.radio_button :deposit_type, '当座', class: 'form-check-input'
+                      = f.label :deposit_type, '当座', class: 'form-check-label'
               tr
                 td.tbl_03 口座名義
                 td.tbl_01
                   span.bnk_area
-                    = f.text_field :account_holder, id:'account_holder'
-          = f.submit '申請する'
+                    = f.text_field :account_holder, id:'account_holder', placeholder:"例：イトウ　カイジ"
+              tr
+                td.tbl_03 口座番号
+                td.tbl_01
+                  span.bnk_area
+                    = f.text_field :bank_account_number, id:'bank_account_number', placeholder:"例：0001234"
+              tr
+                td.tbl_03 振込金額
+                td.tbl_01
+                  span.bnk_area
+                    - if @user.sales >= 5000
+                    = f.number_field :transfer_money, id:'transfer_money', placeholder:"例：5000", min:"5000", max:"#{@user.sales}"
+          
+          - if @user.sales >= 5000
+            = f.submit '申請する'
+          - else
+            p.caution.text-white-50.bg-danger 売上金が足りないため申請できません

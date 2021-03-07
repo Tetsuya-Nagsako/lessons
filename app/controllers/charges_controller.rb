@@ -42,6 +42,29 @@ class ChargesController < ApplicationController
     redirect_to charge_path
   end
   
+  def buy_with_sales
+    @lesson = Lesson.find(params[:id])
+    
+    user = User.find(current_user.id)
+    user.sales = user.sales - @lesson.price
+    user.save!
+    
+    payment = Payment.new
+    payment.user_id = current_user.id
+    payment.lesson_id = @lesson.id
+    payment.charge_amount = @lesson.price
+    payment.charge_description = @lesson.title
+    payment.email = current_user.email
+    payment.payment_date = Time.current
+    payment.save!
+    
+    @lesson.bought_user = current_user.id
+    @lesson.status = 1
+    @lesson.save!
+    
+    redirect_to lesson_path(params[:id]), notice: "レッスンを購入しました！実際に受講しましたら、マイページから受講完了を押してください。"
+  end
+  
   def attending_complete
     lesson = Lesson.find(params[:id])
     user = User.find(lesson.user_id)
@@ -55,7 +78,7 @@ class ChargesController < ApplicationController
     lesson.status = 3
     lesson.save!
     
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user.id), flash: {success: '受講完了を連絡しました'}
   end
   
 end

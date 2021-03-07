@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
 }
 
-.home_wrapper,.user_wrapper,.lesson_user_index_wrapper,.comment_new_wrapper {
+.home_wrapper,.user_wrapper,.lesson_user_index_wrapper,.comment_new_wrapper,.remittance_new_wrapper {
   flex: 1;
 }
 
@@ -81,6 +81,11 @@ h2,h3 {
   padding-bottom: 20px;
 }
 
+.information {
+  padding-bottom: 5px;
+  margin-bottom: 0;
+}
+
 //HOME画面
 .home_wrapper {
   .main {
@@ -115,8 +120,8 @@ h2,h3 {
         }
         ul {
           width: 220px;
-          background: #dbff9c;
-          box-shadow: 0px 0px 0px 10px #dbff9c;/*線の外側*/
+          background: #fdffd4;
+          box-shadow: 0px 0px 0px 10px #fdffd4;/*線の外側*/
           border: dashed 2px #ffffff;/*破線*/
           border-radius: 9px;
           margin-left: 10px;/*はみ出ないように調整*/
@@ -270,14 +275,23 @@ h2,h3 {
 }
 
 .show_comment1 {
-  font-size: 12px;
+  font-size: 7pt;
   margin-bottom: 0;
 }
 
 .show_comment2 {
-  font-size: 12px;
+  font-size: 7pt;
 }
 
+.point_bought1 {
+  font-size: 7pt;
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+.point_bought2 {
+  font-size: 7pt;
+}
 
 
 //レッスン投稿画面
@@ -357,7 +371,7 @@ h2,h3 {
 
 .star {
   margin-bottom: 0;
-  padding: 5px;
+  padding: 5px 5px 0 5px;
   align-items: flex-start;
 }
 
@@ -365,6 +379,20 @@ h2,h3 {
     padding-top: 5px;
   }
 
+
+//振り込みページ
+.form-check-label {
+  padding-right: 40px;
+}
+
+.caution {
+  margin-top: 25px;
+  text-align: center;
+}
+
+input[type="number"] {
+        width: 193px;
+    }
 
 //footer
 footer {

@@ -1,6 +1,7 @@
 .user_wrapper
   .main
     .container
+      = render 'layouts/flash_messages'
       h1 My Page 
       .card
         .card-header
@@ -11,7 +12,7 @@
         .card-body
           h4 売上：#{@user.sales}（円）
           p.text-black-50 ※受講料の90％が売り上げに反映されます
-          = link_to '売上金の振り込み申請', new_remittance_path
+          = link_to '売上金の振り込み申請', new_remittance_path, data: {"turbolinks" => false}
       br
       = link_to '投稿したLesson一覧', user_index_lessons_path
       br
