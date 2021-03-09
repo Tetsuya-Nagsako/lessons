@@ -33,6 +33,8 @@ gem 'html2slim'
 gem 'carrierwave'
 gem 'fog-aws'
 
+gem 'dotenv-rails'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -41,8 +43,6 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-stack_explorer"
   gem "rspec-rails"
-  gem 'dotenv-rails'
-  gem 'rspec-rails'
 end
 
 group :development do
