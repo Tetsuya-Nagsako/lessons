@@ -59,3 +59,6 @@ group :test do
   gem 'factory_bot_rails'
 end
 
+group :production, :staging do
+  gem 'unicorn'
+end

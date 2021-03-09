@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: lessons_production
-  username: lessons
-  password: <%= ENV['LESSONS_DATABASE_PASSWORD'] %>
+  username: root
+  password: Nunoboko5070@mysql
