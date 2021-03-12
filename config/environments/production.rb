@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   # mailer setting
-  config.action_mailer.default_url_options = { protocol: 'http', host: 'http://52.14.81.252/' }
+  config.action_mailer.default_url_options = { protocol: 'http', host: 'http://52.68.12.45/' }
   
   if Rails.application.credentials.gmail.present?
     mail_address = Rails.application.credentials.gmail[:address]
