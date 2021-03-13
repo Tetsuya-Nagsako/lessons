@@ -28,7 +28,9 @@
           
           - if @lesson.bought_user
             p.badge.badge-danger すでに誰かが購入済み。購入できません
-          -else
+          - elsif @lesson.user_id == current_user.id
+            p.badge.badge-info あなたが出品しているレッスンです
+          - else
             = form_tag charge_path(@lesson) do
               script.stripe-button data-amount="#{@lesson.price}\
               " data-currency="jpy" data-description="クレジット決済\
@@ -37,8 +39,8 @@
               " data-allow-remember-me="false" src="https://checkout.stripe.com/checkout.js"
           
           .bought_lesson    
-            - if !@lesson.bought_user && current_user.sales >= @lesson.price
-              = link_to '売上金を使って購入する', buy_with_sales_path(@lesson),data: { confirm: '本当によろしいですか' }, method: :post, class: "button1"
+            - if !@lesson.bought_user && current_user.sales >= @lesson.price && @lesson.user_id != current_user.id
+              = link_to '売上金を使って購入する', buy_with_sales_path(@lesson),data: { confirm: '本当によろしいですか' }, method: :post, class: "button3"
               p.point_bought1 ※売上金の一部を使うことはできません。売上金から全額支払いとなります
               p.point_bought2 ※自身の売上金は、マイページからご確認ください
               

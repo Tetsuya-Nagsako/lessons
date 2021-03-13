@@ -16,8 +16,11 @@ module DeviseHelper
     html.html_safe
   end
   
-  def bought_lesson
-    Lesson.find_by(bought_user: current_user.id)
+  def bought_lesson?
+    lessons = Lesson.find_by(bought_user: current_user.id)
+    if lessons.blank?
+      return true
+    end
   end
   
 end

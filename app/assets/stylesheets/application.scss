@@ -369,6 +369,29 @@ h2,h3 {
   background    : #ffffff;
 }
 
+.button3 {
+  margin-top: 0;
+  display       : inline-block;
+  border-radius : 5%;
+  font-size     : 10pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 7px 10px;
+  background    : #25c900;
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  border        : 2px solid #25c900;
+}
+
+.button3:hover {
+  color         : #25c900;
+  background    : #ffffff;
+}
+
+
+
+
 .star {
   margin-bottom: 0;
   padding: 5px 5px 0 5px;
