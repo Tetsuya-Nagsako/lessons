@@ -1,9 +1,9 @@
 header
-  nav class="navbar fixed-top navbar-expand-lg navbar-light container p-1" style="background-color: #fdffd4;"
+  nav class="navbar fixed-top navbar-expand-md navbar-light container p-1" style="background-color: #fdffd4;"
     = link_to image_tag('insert/logo.png', class: 'navbar-brand'), root_path
     button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
       span class="navbar-toggler-icon"
-    div class="collapse navbar-collapse" id="navbarSupportedContent"
+    div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent"
       ul class="navbar-nav ml-auto mt-2 mt-lg-0"
         li class="nav-item"
           = link_to 'ホーム', top_pages_home_path, class: 'nav-link'

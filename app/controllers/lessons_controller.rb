@@ -58,10 +58,14 @@ class LessonsController < ApplicationController
 
   # DELETE /lessons/1 or /lessons/1.json
   def destroy
-    @lesson.destroy
-    respond_to do |format|
-      format.html { redirect_to lessons_url, notice: "Lessonの削除が完了しました" }
-      format.json { head :no_content }
+    if @lesson.status.blank? || @lesson.status == 3
+      @lesson.destroy
+      respond_to do |format|
+        format.html { redirect_to lessons_url, notice: "Lessonの削除が完了しました" }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path, flash: {danger: '受講完了を受けていないので、削除できません'}
     end
   end
 

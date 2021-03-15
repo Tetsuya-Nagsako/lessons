@@ -16,9 +16,9 @@
           p
             strong 内容・詳細事項:　
             = @lesson.description
-          p.show-img
+          p
             strong イメージ画像:
-            = image_tag @lesson.image.url
+            = image_tag @lesson.image.url, class: 'show-img'
           p
             strong 受講料（円）:　
             = @lesson.price
@@ -44,7 +44,6 @@
               p.point_bought1 ※売上金の一部を使うことはできません。売上金から全額支払いとなります
               p.point_bought2 ※自身の売上金は、マイページからご確認ください
               
-          br
           - if current_user.id == @lesson.user.id
             => link_to '編集', edit_lesson_path(@lesson)
             '|

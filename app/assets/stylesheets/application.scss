@@ -1,6 +1,7 @@
 @import "bootstrap";
 
 html {
+  font-size: 1vw;
   height: 100%;
 }
 
@@ -52,21 +53,30 @@ h2,h3 {
   padding: 0;
 }
 
-.navbar-nav {
-  padding: 15px 40px;
-  list-style: none;
+.navbar-toggler {
+  font-size: 3rem;
+  margin-right: 10px;
 }
 
 #navbarSupportedContent {
-  height: 40px 
+  height: auto;
+}
+
+.navbar-nav {
+  padding-left: 40px;
+  padding-right: 40px;
+  list-style: none;
 }
 
 .nav-item {
   padding-right: 40px;
   min-height: 40px !important
 }
+
 .nav-link {
   color: #a3b2c9;
+  padding: auto;
+  line-height: 40px;
 }
 
 //main
@@ -98,16 +108,16 @@ h2,h3 {
         }
         .border_bottom {
           position: relative;
-          width: 90%;
-          border-bottom: double 6px #ff8af9
+          width: 82%;
+          border-bottom: double 0.4rem #ff8af9
         }
         .border_right {
-            width: 98%;
-            height: 135%;
+            width: 98.5%;
+            height: 136%;
             max-height: 200px;
             position: absolute;
               top: 0;
-              border-right: double 6px #ff8af9;
+              border-right: double 0.4rem #ff8af9;
           }
       }
       
@@ -146,42 +156,53 @@ h2,h3 {
     margin-bottom: 20px;
   p {
     margin: 2px;
-    font-size: 15px;
+    font-size: 1rem;
   }
 }
 
-.home_img {
-  z-index: -1;
-  width: 80%;
-  max-width: 80%;
-  height: auto;
-  @media screen and (min-width:1000px) {
+@media screen and (max-width:1000px) {
+  .home_img,.top_img {
+  width: 100%;
+  }
+}
+
+@media screen and (min-width:1000px) {
+  .home_img {
+    z-index: -1;
+    width: 80%;
+    height: auto;
     position: absolute;
       left: 17%;
       top: 7%;
   }
-}
-
-.top_img {
+  .top_img {
   z-index: -1;
   width: 70%;
-  max-width: 70%;
   height: auto;
-  @media screen and (min-width:1000px) {
-    position: absolute;
-      left: 20%;
-      top: -10%;
+  position: absolute;
+    left: 20%;
+    top: -10%;
   }
 }
 
+
 //lesson index画面
-.show_edit_destroy {
-  width: 60px;
+.home_link {
+  display: inline-block;
+}
+
+.home_nav_img {
+  display: inline-block;
+  width: 70px;
+}
+
+.table-title {
+  width: 16%;
 }
 
 .table-img {
-  height: 350px;
-  width: 380px;
+  height: 20vw;
+  width: 40%;
   position: relative;
 }
 
@@ -207,31 +228,22 @@ h2,h3 {
 }
 
 .table-description {
-  width: 380px;
+  width: 25%;
 }
 
 .table-price {
-  width: 80px;
+  width: 7%;
 }
 
-.table-title {
-  width: 120px;
-}
-
-.show-img > img{
-  width: 500px;
+.show_edit_destroy {
+  width: 4%;
+  font-size: 0.7rem;
 }
 
 //レッスンshow画面
-.home_link {
-  display: inline-block;
+.show-img {
+ width: 80%; 
 }
-
-.home_nav_img {
-  display: inline-block;
-  width: 70px;
-}
-
 .comment-user-name {
   display: inline-block;
   padding-right: 30px;
@@ -332,7 +344,7 @@ h2,h3 {
     margin-top: 4px;
     display       : inline-block;
     border-radius : 5%;
-    font-size     : 10pt;
+    font-size     : 1rem;
     text-align    : center;
     cursor        : pointer;
     padding       : 7px 10px;
@@ -353,7 +365,7 @@ h2,h3 {
   margin-top: 0;
   display       : inline-block;
   border-radius : 5%;
-  font-size     : 10pt;
+  font-size     : 1rem;
   text-align    : center;
   cursor        : pointer;
   padding       : 7px 10px;
@@ -389,7 +401,9 @@ h2,h3 {
   background    : #ffffff;
 }
 
-
+.col-form-label {
+  padding-right: 10px;
+}
 
 
 .star {
@@ -398,10 +412,19 @@ h2,h3 {
   align-items: flex-start;
 }
 
+@media screen and (max-width:1000px) {
 .star > img {
+    width: 3rem;
+    padding-top: 4px;
+  }
+}
+
+@media screen and (min-width:1000px) {
+.star > img {
+    width: 1.5rem;
     padding-top: 5px;
   }
-
+}
 
 //振り込みページ
 .form-check-label {

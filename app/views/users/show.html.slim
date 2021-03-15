@@ -27,7 +27,7 @@
             - if lesson.status == 1
               = form_with model: lesson.user, method: :put do |f|
                 .star.form-group.row
-                  = f.label :star,'評価 ', class:'col-md-1 col-form-label'
+                  = f.label :star,'評価 ', class:'col-form-label'
                   = f.hidden_field :user_id, :value => "#{lesson.user_id}"
                   = f.hidden_field :lesson_id, :value => "#{lesson.id}"
                 .form-group.row

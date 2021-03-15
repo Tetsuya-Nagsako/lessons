@@ -68,17 +68,19 @@ class ChargesController < ApplicationController
   def attending_complete
     lesson = Lesson.find(params[:id])
     user = User.find(lesson.user_id)
-    if user.sales.blank?
-      user.sales = lesson.price * 0.9
+    if lesson.bought_user == current_user.id
+      if user.sales.blank?
+        user.sales = lesson.price * 9 / 10
+      else
+        user.sales = user.sales + lesson.price * 9 / 10
+      end
+      user.save!
+      lesson.status = 3
+      lesson.save!
+      redirect_to user_path(current_user.id), flash: {success: '受講完了を連絡しました'}
     else
-      user.sales = user.sales + lesson.price * 0.9
+      redirect_to user_path(current_user.id), flash: {danger: '受講完了連絡は本人のみ可能です'}
     end
-    user.save!
-    
-    lesson.status = 3
-    lesson.save!
-    
-    redirect_to user_path(current_user.id), flash: {success: '受講完了を連絡しました'}
   end
   
 end

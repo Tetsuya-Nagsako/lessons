@@ -10,14 +10,14 @@
       .content
         .row
           - if user_signed_in?
-            .col-md-2
+            .col-md-2.col-6
               = link_to 'アカウント編集', edit_user_registration_path, class: 'btn btn-outline-success btn-block'
-            .col-md-2
+            .col-md-2.col-6
               = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-success btn-block'
           - else
-            .col-md-2
+            .col-md-2.col-6
               = link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-success btn-block'
-            .col-md-2
+            .col-md-2.col-6
               = link_to "ログイン", new_user_session_path, class: 'btn btn-outline-success btn-block'
         ul.top_ul
           li = link_to 'レッスンを見てみる', lessons_path
