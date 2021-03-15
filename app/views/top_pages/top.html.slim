@@ -22,7 +22,7 @@
         ul.top_ul
           li = link_to 'レッスンを見てみる', lessons_path
           - if current_user
-            li = link_to 'マイページへ', user_path(current_user.id)
+            li = link_to 'マイページへ', user_path(current_user.id), data: {"turbolinks" => false}
         .sentence
           p あなたの「好き！」を誰かに、誰かの「好き！」をあなたに。。。
           p 教えてあげられることを投稿し、習いたいレッスンを探そう！

@@ -427,8 +427,13 @@ h2,h3 {
 }
 
 //振り込みページ
+.form-check-input {
+display: block;
+}
+
 .form-check-label {
-  padding-right: 40px;
+  display: block;
+  margin-left: 10px;
 }
 
 .caution {
@@ -436,9 +441,9 @@ h2,h3 {
   text-align: center;
 }
 
-input[type="number"] {
-        width: 193px;
-    }
+#bank_code2,#branch_code2,.form-check,#account_holder,#bank_account_number,#transfer_money {
+  width: 90%;
+}
 
 //footer
 footer {
