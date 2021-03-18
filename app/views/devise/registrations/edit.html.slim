@@ -31,4 +31,4 @@
         - if current_user.sales == 0 && current_user.lessons.blank? && bought_lesson?
           = link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('.are_you_sure')}, method: :delete, class: 'btn btn-danger btn-block'
         - else
-          p.caution.text-white-50.bg-danger 売上が残っているか、投稿したレッスンが残っているため、アカウント削除できません。
+          p.caution.text-white-50.bg-danger 売上が残っているか、関係するレッスンが残っているため、アカウント削除できません。
