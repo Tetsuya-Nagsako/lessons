@@ -42,6 +42,8 @@ class ChargesController < ApplicationController
     redirect_to charge_path
   end
   
+  
+  
   def buy_with_sales
     @lesson = Lesson.find(params[:id])
     

@@ -39,7 +39,7 @@
               " data-allow-remember-me="false" src="https://checkout.stripe.com/checkout.js"
           
           .bought_lesson    
-            - if !@lesson.bought_user && current_user.sales >= @lesson.price && @lesson.user_id != current_user.id
+            - if buyable_with_sales?
               = link_to '売上金を使って購入する', buy_with_sales_path(@lesson),data: { confirm: '本当によろしいですか' }, method: :post, class: "button3"
               p.point_bought1 ※売上金の一部を使うことはできません。売上金から全額支払いとなります
               p.point_bought2 ※自身の売上金は、マイページからご確認ください
@@ -57,15 +57,16 @@
           h5 コメント一覧
           p.show_comment1 ※コメントは、レッスンが購入されると、購入ユーザー間でしかできなくなります
           p.show_comment2 ※また、他の人は、コメント欄を見ることができなくなります
-          - @lesson.comments.each do |comment|
-              ul.comment
-                .comment-user-name.text-black-50 = comment.user.name
-                li.comment-content = comment.content
-                - if current_user.id == comment.user_id
-                  = link_to lesson_comment_path(@lesson.id,comment.id), method: :delete do
-                    = image_tag 'icons/trash.png', class: 'topic-index-icon-trash'
-          br
-          - if @lesson.bought_user.blank? || @lesson.bought_user == current_user.id || current_user.id == @lesson.user_id
+          
+          - if @lesson.bought_user.blank? || commentable_user?
+            - @lesson.comments.each do |comment|
+                ul.comment
+                  .comment-user-name.text-black-50 = comment.user.name
+                  li.comment-content = comment.content
+                  - if current_user.id == comment.user_id
+                    = link_to lesson_comment_path(@lesson.id,comment.id), method: :delete do
+                      = image_tag 'icons/trash.png', class: 'topic-index-icon-trash'
+            br
             = link_to 'コメントを投稿する', new_lesson_comment_path(@lesson)
           - else
             p.badge.badge-danger すでに誰かが購入済み。該当ユーザーしかコメントできません。

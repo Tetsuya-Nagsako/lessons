@@ -15,4 +15,18 @@ module LessonsHelper
     end
     html.html_safe
   end
+  
+  def buyable_with_sales?
+    if !@lesson.bought_user && current_user.sales >= @lesson.price && @lesson.user_id != current_user.id
+      return true
+    end
+  end
+  
+  
+  def commentable_user?
+    if @lesson.user_id == current_user.id || @lesson.bought_user == current_user.id
+      return true
+    end
+  end
+  
 end

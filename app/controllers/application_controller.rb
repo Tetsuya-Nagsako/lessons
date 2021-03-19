@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :user_deletable?, only: %i[ destroy ], if: -> { controller_name == "registrations" }
+  before_action :authenticate_user!, only: %i[ new show create edit update destroy buy_with_sales attending_complete ]
   
   def after_sign_in_path_for(resource)
       top_pages_home_path
