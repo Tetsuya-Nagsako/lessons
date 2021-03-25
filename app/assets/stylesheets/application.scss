@@ -168,6 +168,8 @@ h2,h3 {
 
 @media screen and (min-width:1000px) {
   .home_img {
+    // jQueryで動きつけるか未定
+    // display: none;
     z-index: -1;
     width: 80%;
     height: auto;
@@ -468,9 +470,23 @@ display: block;
   text-align: center;
 }
 
-#bank_code2,#branch_code2,.form-check,#account_holder,#bank_account_number,#transfer_money {
-  width: 90%;
+
+.tbl_01 {
+  display: block;
 }
+
+.bnk_area {
+  input {
+    display: block;
+  }
+}
+
+
+#transfer_money {
+  width: 100%;
+}
+
+
 
 //footer
 footer {
