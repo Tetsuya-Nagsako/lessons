@@ -3,8 +3,16 @@ class LessonsController < ApplicationController
   before_action :user_confirm, only: %i[ edit update destroy ]
 
   def index
-    @lessons = Lesson.all
-    @lessons = @lessons.order("time_information DESC")
+    if params[:q] != nil
+      params[:q]['title_or_description_cont_any'] = params[:q]['title_or_description_cont_any'].split(/[\p{blank}\s]+/)
+      @q = Lesson.ransack(params[:q])
+      @lessons = @q.result(distinct: true)
+      @lessons = @lessons.order("time_information DESC")
+    else
+      @q = Lesson.ransack(params[:q])
+      @lessons = @q.result(distinct: true)
+      @lessons = @lessons.order("time_information DESC")
+    end
   end
 
   def user_index
