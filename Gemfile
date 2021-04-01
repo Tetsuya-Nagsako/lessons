@@ -27,6 +27,8 @@ gem 'rails-i18n', '~> 5.1'
 gem 'stripe'
 gem 'bcrypt'
 
+gem 'ransack'
+
 gem "slim-rails"
 gem 'html2slim'
 

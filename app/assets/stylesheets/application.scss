@@ -216,11 +216,16 @@ h2,h3 {
 
 
 //lesson index画面
+.lesson_search {
+  margin-bottom: 0.5rem;
+}
+
 .home_link {
   display: inline-block;
 }
 
 .home_nav_img {
+  z-index: -1;
   display: inline-block;
   width: 70px;
 }
