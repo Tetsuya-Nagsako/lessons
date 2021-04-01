@@ -218,10 +218,24 @@ h2,h3 {
 //lesson index画面
 .lesson_search {
   margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.form-inline {
+  margin-bottom: 0.5rem;
+}
+
+.second_form_line {
+  display: inline-block;
+}
+
+.search_btn {
+  margin-left: 0.5rem;
 }
 
 .home_link {
   display: inline-block;
+  text-align:right
 }
 
 .home_nav_img {
