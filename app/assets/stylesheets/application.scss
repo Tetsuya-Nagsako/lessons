@@ -216,8 +216,22 @@ h2,h3 {
 
 
 //lesson index画面
+.index_top_frame {
+  display: flex;
+  align-items: center;
+}
+
 .lesson_search {
+  margin-right: auto;
+  display: inline-block;
+}
+
+.form-inline {
   margin-bottom: 0.5rem;
+}
+
+.search_btn {
+  margin-left: 0.5rem;
 }
 
 .home_link {
@@ -226,8 +240,7 @@ h2,h3 {
 
 .home_nav_img {
   z-index: -1;
-  display: inline-block;
-  width: 70px;
+  width: 7vw;
 }
 
 .table-title {
